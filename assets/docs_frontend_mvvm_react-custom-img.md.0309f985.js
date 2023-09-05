@@ -1,0 +1,65 @@
+import{_ as s,o as n,c as a,Q as l}from"./chunks/framework.a5795de3.js";const d=JSON.parse('{"title":"React 图片获取失败时能显示指定的默认图片","description":"","frontmatter":{"title":"React 图片获取失败时能显示指定的默认图片","catalog":true,"date":"2016-11-01T16:50:24.000Z","subtitle":null,"header-img":null,"tags":["React"]},"headers":[],"relativePath":"docs/frontend/mvvm/react-custom-img.md","filePath":"docs/frontend/mvvm/react-custom-img.md"}'),p={name:"docs/frontend/mvvm/react-custom-img.md"},o=l(`<h1 id="react-图片获取失败时能显示指定的默认图片" tabindex="-1">React 图片获取失败时能显示指定的默认图片 <a class="header-anchor" href="#react-图片获取失败时能显示指定的默认图片" aria-label="Permalink to &quot;React 图片获取失败时能显示指定的默认图片&quot;">​</a></h1><div class="language-jsx vp-adaptive-theme line-numbers-mode"><button title="Copy Code" class="copy"></button><span class="lang">jsx</span><pre class="shiki github-dark vp-code-dark"><code><span class="line"><span style="color:#F97583;">import</span><span style="color:#E1E4E8;"> React </span><span style="color:#F97583;">from</span><span style="color:#E1E4E8;"> </span><span style="color:#9ECBFF;">&quot;react&quot;</span><span style="color:#E1E4E8;">;</span></span>
+<span class="line"><span style="color:#F97583;">import</span><span style="color:#E1E4E8;"> ReactDOM </span><span style="color:#F97583;">from</span><span style="color:#E1E4E8;"> </span><span style="color:#9ECBFF;">&quot;react-dom&quot;</span><span style="color:#E1E4E8;">;</span></span>
+<span class="line"><span style="color:#6A737D;">/**</span></span>
+<span class="line"><span style="color:#6A737D;"> * 图片加载失败就显示默认图片</span></span>
+<span class="line"><span style="color:#6A737D;"> */</span></span>
+<span class="line"><span style="color:#F97583;">class</span><span style="color:#E1E4E8;"> </span><span style="color:#B392F0;">Img</span><span style="color:#E1E4E8;"> </span><span style="color:#F97583;">extends</span><span style="color:#E1E4E8;"> </span><span style="color:#B392F0;">React</span><span style="color:#E1E4E8;">.</span><span style="color:#B392F0;">Component</span><span style="color:#E1E4E8;"> {</span></span>
+<span class="line"><span style="color:#E1E4E8;">  </span><span style="color:#F97583;">constructor</span><span style="color:#E1E4E8;">(</span><span style="color:#FFAB70;">props</span><span style="color:#E1E4E8;">) {</span></span>
+<span class="line"><span style="color:#E1E4E8;">    </span><span style="color:#79B8FF;">super</span><span style="color:#E1E4E8;">(props);</span></span>
+<span class="line"><span style="color:#E1E4E8;">    </span><span style="color:#79B8FF;">this</span><span style="color:#E1E4E8;">.state </span><span style="color:#F97583;">=</span><span style="color:#E1E4E8;"> {</span></span>
+<span class="line"><span style="color:#E1E4E8;">      imageUrl: </span><span style="color:#79B8FF;">this</span><span style="color:#E1E4E8;">.props.imageUrl,</span></span>
+<span class="line"><span style="color:#E1E4E8;">    };</span></span>
+<span class="line"><span style="color:#E1E4E8;">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8;">  </span><span style="color:#B392F0;">handleImageLoaded</span><span style="color:#E1E4E8;">() {}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8;">  </span><span style="color:#B392F0;">handleImageErrored</span><span style="color:#E1E4E8;">() {</span></span>
+<span class="line"><span style="color:#E1E4E8;">    </span><span style="color:#79B8FF;">this</span><span style="color:#E1E4E8;">.</span><span style="color:#B392F0;">setState</span><span style="color:#E1E4E8;">({</span></span>
+<span class="line"><span style="color:#E1E4E8;">      imageUrl: </span><span style="color:#79B8FF;">this</span><span style="color:#E1E4E8;">.props.defaultImg,</span></span>
+<span class="line"><span style="color:#E1E4E8;">    });</span></span>
+<span class="line"><span style="color:#E1E4E8;">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8;">  </span><span style="color:#B392F0;">render</span><span style="color:#E1E4E8;">() {</span></span>
+<span class="line"><span style="color:#E1E4E8;">    </span><span style="color:#F97583;">return</span><span style="color:#E1E4E8;"> (</span></span>
+<span class="line"><span style="color:#E1E4E8;">      &lt;</span><span style="color:#85E89D;">img</span></span>
+<span class="line"><span style="color:#E1E4E8;">        </span><span style="color:#B392F0;">style</span><span style="color:#F97583;">=</span><span style="color:#E1E4E8;">{</span><span style="color:#79B8FF;">this</span><span style="color:#E1E4E8;">.props.style}</span></span>
+<span class="line"><span style="color:#E1E4E8;">        </span><span style="color:#B392F0;">src</span><span style="color:#F97583;">=</span><span style="color:#E1E4E8;">{</span><span style="color:#79B8FF;">this</span><span style="color:#E1E4E8;">.state.imageUrl}</span></span>
+<span class="line"><span style="color:#E1E4E8;">        </span><span style="color:#B392F0;">onLoad</span><span style="color:#F97583;">=</span><span style="color:#E1E4E8;">{</span><span style="color:#79B8FF;">this</span><span style="color:#E1E4E8;">.handleImageLoaded.</span><span style="color:#B392F0;">bind</span><span style="color:#E1E4E8;">(</span><span style="color:#79B8FF;">this</span><span style="color:#E1E4E8;">)}</span></span>
+<span class="line"><span style="color:#E1E4E8;">        </span><span style="color:#B392F0;">onError</span><span style="color:#F97583;">=</span><span style="color:#E1E4E8;">{</span><span style="color:#79B8FF;">this</span><span style="color:#E1E4E8;">.handleImageErrored.</span><span style="color:#B392F0;">bind</span><span style="color:#E1E4E8;">(</span><span style="color:#79B8FF;">this</span><span style="color:#E1E4E8;">)}</span></span>
+<span class="line"><span style="color:#E1E4E8;">      /&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8;">    );</span></span>
+<span class="line"><span style="color:#E1E4E8;">  }</span></span>
+<span class="line"><span style="color:#E1E4E8;">}</span></span>
+<span class="line"><span style="color:#F97583;">export</span><span style="color:#E1E4E8;"> </span><span style="color:#F97583;">default</span><span style="color:#E1E4E8;"> Img;</span></span></code></pre><pre class="shiki github-light vp-code-light"><code><span class="line"><span style="color:#D73A49;">import</span><span style="color:#24292E;"> React </span><span style="color:#D73A49;">from</span><span style="color:#24292E;"> </span><span style="color:#032F62;">&quot;react&quot;</span><span style="color:#24292E;">;</span></span>
+<span class="line"><span style="color:#D73A49;">import</span><span style="color:#24292E;"> ReactDOM </span><span style="color:#D73A49;">from</span><span style="color:#24292E;"> </span><span style="color:#032F62;">&quot;react-dom&quot;</span><span style="color:#24292E;">;</span></span>
+<span class="line"><span style="color:#6A737D;">/**</span></span>
+<span class="line"><span style="color:#6A737D;"> * 图片加载失败就显示默认图片</span></span>
+<span class="line"><span style="color:#6A737D;"> */</span></span>
+<span class="line"><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Img</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">extends</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">React</span><span style="color:#24292E;">.</span><span style="color:#6F42C1;">Component</span><span style="color:#24292E;"> {</span></span>
+<span class="line"><span style="color:#24292E;">  </span><span style="color:#D73A49;">constructor</span><span style="color:#24292E;">(</span><span style="color:#E36209;">props</span><span style="color:#24292E;">) {</span></span>
+<span class="line"><span style="color:#24292E;">    </span><span style="color:#005CC5;">super</span><span style="color:#24292E;">(props);</span></span>
+<span class="line"><span style="color:#24292E;">    </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.state </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> {</span></span>
+<span class="line"><span style="color:#24292E;">      imageUrl: </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.props.imageUrl,</span></span>
+<span class="line"><span style="color:#24292E;">    };</span></span>
+<span class="line"><span style="color:#24292E;">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#24292E;">  </span><span style="color:#6F42C1;">handleImageLoaded</span><span style="color:#24292E;">() {}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#24292E;">  </span><span style="color:#6F42C1;">handleImageErrored</span><span style="color:#24292E;">() {</span></span>
+<span class="line"><span style="color:#24292E;">    </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.</span><span style="color:#6F42C1;">setState</span><span style="color:#24292E;">({</span></span>
+<span class="line"><span style="color:#24292E;">      imageUrl: </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.props.defaultImg,</span></span>
+<span class="line"><span style="color:#24292E;">    });</span></span>
+<span class="line"><span style="color:#24292E;">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#24292E;">  </span><span style="color:#6F42C1;">render</span><span style="color:#24292E;">() {</span></span>
+<span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">return</span><span style="color:#24292E;"> (</span></span>
+<span class="line"><span style="color:#24292E;">      &lt;</span><span style="color:#22863A;">img</span></span>
+<span class="line"><span style="color:#24292E;">        </span><span style="color:#6F42C1;">style</span><span style="color:#D73A49;">=</span><span style="color:#24292E;">{</span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.props.style}</span></span>
+<span class="line"><span style="color:#24292E;">        </span><span style="color:#6F42C1;">src</span><span style="color:#D73A49;">=</span><span style="color:#24292E;">{</span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.state.imageUrl}</span></span>
+<span class="line"><span style="color:#24292E;">        </span><span style="color:#6F42C1;">onLoad</span><span style="color:#D73A49;">=</span><span style="color:#24292E;">{</span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.handleImageLoaded.</span><span style="color:#6F42C1;">bind</span><span style="color:#24292E;">(</span><span style="color:#005CC5;">this</span><span style="color:#24292E;">)}</span></span>
+<span class="line"><span style="color:#24292E;">        </span><span style="color:#6F42C1;">onError</span><span style="color:#D73A49;">=</span><span style="color:#24292E;">{</span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.handleImageErrored.</span><span style="color:#6F42C1;">bind</span><span style="color:#24292E;">(</span><span style="color:#005CC5;">this</span><span style="color:#24292E;">)}</span></span>
+<span class="line"><span style="color:#24292E;">      /&gt;</span></span>
+<span class="line"><span style="color:#24292E;">    );</span></span>
+<span class="line"><span style="color:#24292E;">  }</span></span>
+<span class="line"><span style="color:#24292E;">}</span></span>
+<span class="line"><span style="color:#D73A49;">export</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">default</span><span style="color:#24292E;"> Img;</span></span></code></pre><div class="line-numbers-wrapper" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br></div></div>`,2),e=[o];function r(c,t,E,y,i,m){return n(),a("div",null,e)}const u=s(p,[["render",r]]);export{d as __pageData,u as default};
